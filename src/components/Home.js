@@ -1,31 +1,31 @@
-import featImg from "../assets/img-main.jpg";
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../assets/red30-tech-logo.png';
 
-export default function Home({ title }) {
-  return (
-    <div className="container">
-      <img
-        className="img-feat"
-        src={featImg}
-        alt="Red30 Tech conference attendees on a laptop"
-      />
+export default function Header() {
+	const getClass = ({ isActive }) => (isActive ? 'nav-active' : null);
 
-      <h1>{title}</h1>
-      <p>
-        This is a fictitious company and conference created by{" "}
-        <a
-          href="https://www.linkedin.com/feed/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          LinkedIn Corporation, or its affiliates
-        </a>
-        , solely for the creation and development of educational training
-        materials. Any resemblance to real products or services is purely
-        coincidental. Information provided about the products or services is
-        also fictitious and should not be construed as representative of actual
-        products or services on the market in a similar product or service
-        category.
-      </p>
-    </div>
-  );
+	return (
+		<header className='container'>
+			<Link to='/'>
+				<img
+					className='logo'
+					src={logo}
+					alt='Red30 Tech logo'
+					title='Red30 Tech | Home'
+				/>
+			</Link>
+
+			<nav>
+				<NavLink to='/' className={getClass}>
+					Home
+				</NavLink>
+				<NavLink to='/about' className={getClass}>
+					About
+				</NavLink>
+				<NavLink to='/categories' className={getClass}>
+					Categories
+				</NavLink>
+			</nav>
+		</header>
+	);
 }
